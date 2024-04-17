@@ -9,9 +9,9 @@ Este é um simples sistema de login desenvolvido em Python. Ele permite que os u
 - Armazenamento de usuários: Os dados dos usuários são armazenados em um dicionário em memória durante a execução do programa.
 
 ## Como Usar
-'''bash
+```bash
 git clone https://github.com/LeoMonteiroS/sistema_login.git
-'''
+```
 1. Execute o arquivo `sistema_login.py`.
 2. Siga as instruções para cadastrar um novo usuário.
 3. Após o cadastro, faça login usando o email e a senha cadastrados.
