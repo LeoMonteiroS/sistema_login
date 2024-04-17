@@ -1,42 +1,45 @@
-#cadastro
-while True:    
-    email = input("Digite um email: ")
-    senha = input("Digite uma senha ")
-    print("-"*15)
-    if "@gmail" in email or "@hotmail" in email:
-        pass
-        if len(senha) >= 6:
-            print("Cadastro feito com sucesso")
-            break
-        else:
-            print("Senha muito pequena")
-            senha = input("Digite uma senha novamente ")
-            if len(senha) >= 6:
-                print("Cadastro feito com sucesso")
-                print("-"*6)
-                break
-            else:
-                print("-"*15)
-                print("Senha pequena. Erro de aplicacao. Inicie novamente")
-                exit()
-             
-    else:
-        print("Digite um email valido")
-        print("-"*15)
-#login
-email_login = email
-senha_login = senha
-
-def login():
+def cadastro_usuario(usuarios):
     while True:
-        email_login = str(input("Digite seu email "))
-        senha_login = str(input("Digite sua senha "))
+        email = input("Digite um email: ")
+        if "gmail" in email or "@hotmail" in email:
+            senha = input("Digite uma senha: ")
+            if len(senha) >= 6:
+                # criando uma biblioteca para armazenar todos os usuarios
+                usuarios[email] = senha
 
-        if (email_login == email) and (senha_login == senha):
-            print("Login efetuado com sucesso")
-            print("-"*15)
-            break
+                print("Cadastro feito com sucesso")
+                print("-"*20)
+                return email, senha
+            else:
+                print("Senha muito pequena, tente novamente. ")
         else:
-            print("Email ou senha invalido")
-            print("-"*15)
-login()
+            print("Digite um email válido")
+
+
+def login(email_cadastro, senha_cadastro):
+    while True:
+        email_login = input("Digite seu email: ")
+        senha_login = input("Digite sua senha: ")
+        if email_login == email_cadastro and senha_login == senha_cadastro:
+            print("Login feito com sucesso.")
+            print("-"*20)
+            return True
+        else:
+            print("Email ou senha inválidos, tente novamente")
+
+
+def main():
+    usuarios = {}
+    while True:
+        print("==== Sistema de Login ====")
+        email, senha = cadastro_usuario(usuarios)
+        if login(email, senha):
+            print(usuarios)
+            opcao = input("Deseja cadastrar outro usuário? (s/n): ")
+            print("-"*20)
+            if opcao.upper() != "S":
+                break
+
+
+if __name__ == "__main__"
+main()
